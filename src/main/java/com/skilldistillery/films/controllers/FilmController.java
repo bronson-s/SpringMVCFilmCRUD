@@ -46,6 +46,14 @@ public class FilmController {
 		mv.setViewName("WEB-INF/filmDeleted.jsp");
 		return mv;
 	}
+	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
+	public ModelAndView updateeFilm(@RequestParam("id")int id) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("film", databaseaccessor.updateFilm(databaseaccessor.findFilmById(id)));
+		
+		mv.setViewName("WEB-INF/updatingFilm.jsp");
+		return mv;
+	}
 	
 	
 	
