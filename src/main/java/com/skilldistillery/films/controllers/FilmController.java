@@ -6,9 +6,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FilmController {
 	@RequestMapping(path="index.do", method=RequestMethod.GET)
-	  public ModelAndView getStateByName(String name) {
+	  public ModelAndView index() {
 	    ModelAndView mv = new ModelAndView();
-	    mv.setViewName("WEB-INF/result.jsp");
+	    mv.setViewName("WEB-INF/home.jsp");
 	    return mv;
 	  }
 }
