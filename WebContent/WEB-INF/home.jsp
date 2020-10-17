@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hello
+<h1>Welcome to film site</h1>
+<a href="idForm.html">Get State By Abbreviation</a><br/>
+<a href="createFilmForm.html">Get State By Abbreviation</a><br/>
+
 </body>
 </html>
