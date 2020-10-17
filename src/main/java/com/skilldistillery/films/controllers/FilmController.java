@@ -38,6 +38,15 @@ public class FilmController {
 		mv.setViewName("WEB-INF/addedFilmResult.jsp");
 		return mv;
 	}
+	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
+	public ModelAndView deleteFilm(@RequestParam("id")int id) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("film", databaseaccessor.deleteFilm(databaseaccessor.findFilmById(id)));
+		
+		mv.setViewName("WEB-INF/filmDeleted.jsp");
+		return mv;
+	}
+	
 	
 	
 }

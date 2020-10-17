@@ -31,11 +31,12 @@
     </c:otherwise>
   </c:choose>
   Would you like to delete this film?
-  <form action="deleteFilm.do" method="GET">
+  <form action="deleteFilm.do" method="POST">
+    <input type= "hidden" value="${film.id}" name="id">
+         <input type="submit" value="Delete Film" />
 	
-		<input type="checkbox" name="yes" /> 
-		<input type="checkbox" name="no" /> 
-		<input type="submit" value="Delete Film" />
+	
+	
 	</form>
 </body>
 </html>
