@@ -213,7 +213,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return language;
 
 	}
-@Override
+
+	@Override
 	public boolean deleteFilm(Film film) throws SQLException {
 		Connection conn = null;
 		try {
@@ -236,6 +237,23 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				}
 			}
 			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean updateFilm(Film film) {
+		Connection conn = null;
+		try {
+			String pass = "student";
+			String user = "student";
+			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false);
+			String sql = "UPDATE film SET  (film.title, film.description, film.release_year, film.language_id, film.rent)";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, film.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return true;
 	}
