@@ -249,11 +249,33 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			String user = "student";
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
-			String sql = "UPDATE film SET  (film.title, film.description, film.release_year, film.language_id, film.rent)";
+			String sql = "UPDATE film SET  film.title = ?, film.description = ?, film.release_year = ?"
+					+ " film.language_id = ? film.rent = ?, film.length = ?, film.replacement_cost = ?, "
+					+ "film.rating = ?, film.special_features = ? WHERE id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, film.getId());
-		} catch (Exception e) {
+			stmt.setString(2, film.getDescription());
+			stmt.setShort(3, film.getReleaseYear());
+			stmt.setInt(4, film.getLanguageId());
+			stmt.setInt(5, film.getRentalDuration());
+			stmt.setDouble(6, film.getRentalRate());
+			stmt.setInt(7, film.getLength());
+			stmt.setDouble(8, film.getReplacementCost());
+			stmt.setString(9, film.getRating());
+			stmt.setString(10, film.getSpecialFeatures());
+			int updateCount = stmt.executeUpdate();
+			conn.commit();
+		} catch (SQLException e) {
 			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+
+			return false;
 		}
 		return true;
 	}
