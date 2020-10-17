@@ -8,8 +8,8 @@
 </head>
 <body>
 <h1>Welcome to film site</h1>
-<a href="idForm.html">Get State By Abbreviation</a><br/>
-<a href="createFilmForm.html">Get State By Abbreviation</a><br/>
+<a href="idForm.html">Find film by ID</a><br/>
+<a href="createFilmForm.html">Create Film</a><br/>
 
 </body>
 </html>
