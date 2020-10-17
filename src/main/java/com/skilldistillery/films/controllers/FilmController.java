@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.film.database.DatabaseAccessor;
+import com.skilldistillery.film.entities.Film;
 @Controller
 public class FilmController {
 	@Autowired
@@ -27,6 +28,14 @@ public class FilmController {
 		  mv.addObject("film", databaseaccessor.findFilmById(id));
 
 		mv.setViewName("WEB-INF/IDresults.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "createFilm.do", method = RequestMethod.GET)
+	public ModelAndView finFilmID(Film film) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("film", databaseaccessor.createFilm(film));
+		
+		mv.setViewName("WEB-INF/addedFilmResult.jsp");
 		return mv;
 	}
 	

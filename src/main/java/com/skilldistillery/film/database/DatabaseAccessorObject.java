@@ -152,7 +152,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String pass = "student";
 		String user = "student";
 		try {
-
+System.out.println(film);
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
 			String sql = "INSERT INTO film (film.title, film.description, film.release_year, film.language_id, film.rental_duration, film.rental_rate, film.length,"
@@ -174,6 +174,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				if (keys.next()) {
 					int newFilmId = keys.getInt(1);
 					film.setId(newFilmId);
+					film.setLanguage(findLanguageById(film.getLanguageId()));
+				
 				}
 			} else {
 				film = null;
@@ -193,4 +195,21 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		return film;
 	}
+	public String findLanguageById(int id) throws SQLException {
+		Connection conn = null;
+		String pass = "student";
+		String user = "student";
+		String language = null;
+		conn = DriverManager.getConnection(URL, user, pass);
+		String sql = " Select name  from language where id = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, id);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			language = rs.getString("name");
+		}
+		return language;
+		
+	}
+	
 }
