@@ -250,10 +250,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
 			String sql = "UPDATE film SET  film.title = ?, film.description = ?, film.release_year = ?"
-					+ " film.language_id = ? film.rent = ?, film.length = ?, film.replacement_cost = ?, "
+					+ " film.language_id = ? film.rental_duration = ?, film.length = ?, film.replacement_cost = ?, "
 					+ "film.rating = ?, film.special_features = ? WHERE id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, film.getId());
+			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setShort(3, film.getReleaseYear());
 			stmt.setInt(4, film.getLanguageId());
