@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
+
 @Component
 public class DatabaseAccessorObject implements DatabaseAccessor {
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useJDBCCompliantTimeZoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -152,7 +153,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String pass = "student";
 		String user = "student";
 		try {
-System.out.println(film);
+
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
 			String sql = "INSERT INTO film (film.title, film.description, film.release_year, film.language_id, film.rental_duration, film.rental_rate, film.length,"
@@ -175,7 +176,7 @@ System.out.println(film);
 					int newFilmId = keys.getInt(1);
 					film.setId(newFilmId);
 					film.setLanguage(findLanguageById(film.getLanguageId()));
-				
+
 				}
 			} else {
 				film = null;
@@ -190,11 +191,12 @@ System.out.println(film);
 					System.err.println("Error trying to rollback");
 				}
 			}
-			 throw new RuntimeException("Error inserting a film " + film);
+			throw new RuntimeException("Error inserting a film " + film);
 		}
 
 		return film;
 	}
+
 	public String findLanguageById(int id) throws SQLException {
 		Connection conn = null;
 		String pass = "student";
@@ -209,7 +211,33 @@ System.out.println(film);
 			language = rs.getString("name");
 		}
 		return language;
-		
+
 	}
-	
+@Override
+	public boolean deleteFilm(Film film) throws SQLException {
+		Connection conn = null;
+		try {
+			String pass = "student";
+			String user = "student";
+			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false);
+			String sql = "DELETE FROM film WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, film.getId());
+			int updateCount = stmt.executeUpdate();
+			conn.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+
 }

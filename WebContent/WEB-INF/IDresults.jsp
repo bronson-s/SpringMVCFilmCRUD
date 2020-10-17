@@ -30,5 +30,12 @@
       <p>No film found</p>
     </c:otherwise>
   </c:choose>
+  Would you like to delete this film?
+  <form action="deleteFilm.do" method="GET">
+	
+		<input type="checkbox" name="yes" /> 
+		<input type="checkbox" name="no" /> 
+		<input type="submit" value="Delete Film" />
+	</form>
 </body>
 </html>

@@ -23,7 +23,7 @@ public class FilmController {
 		return mv;
 	}
 	@RequestMapping(path = "findFilmById.do", method = RequestMethod.GET)
-	public ModelAndView finFilmID(@RequestParam("id")int id) throws SQLException {
+	public ModelAndView findFilmID(@RequestParam("id")int id) throws SQLException {
 		ModelAndView mv = new ModelAndView();
 		  mv.addObject("film", databaseaccessor.findFilmById(id));
 
@@ -31,12 +31,13 @@ public class FilmController {
 		return mv;
 	}
 	@RequestMapping(path = "createFilm.do", method = RequestMethod.GET)
-	public ModelAndView finFilmID(Film film) throws SQLException {
+	public ModelAndView makefilm(Film film) throws SQLException {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("film", databaseaccessor.createFilm(film));
 		
 		mv.setViewName("WEB-INF/addedFilmResult.jsp");
 		return mv;
 	}
+	
 	
 }

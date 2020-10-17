@@ -13,4 +13,5 @@ public interface DatabaseAccessor {
 	  public Actor findActorById(int actorId) throws SQLException;
 	  public List<Actor> findActorsByFilmId(int filmId) throws SQLException;
 	  public Film createFilm(Film film) throws SQLException ;
+	  public boolean deleteFilm(Film film) throws SQLException;
 }
