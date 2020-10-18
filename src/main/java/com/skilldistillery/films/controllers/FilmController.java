@@ -54,10 +54,23 @@ public class FilmController {
 		mv.setViewName("WEB-INF/filmDeleted.jsp");
 		return mv;
 	}
-	@RequestMapping(path = "updatingFilm.do", method = RequestMethod.POST)
-	public ModelAndView updateFilm(@RequestParam("id")int id) throws SQLException {
+	@RequestMapping(path = "updatedFilm.do", method = RequestMethod.POST)
+	public ModelAndView updateFilm(Integer id, String title, String description) throws SQLException {
 		ModelAndView mv = new ModelAndView();
-		  mv.addObject("film", databaseaccessor.updateFilm(databaseaccessor.findFilmById(id)));
+	     Film film = databaseaccessor.findFilmById(id);
+	     film.setDescription(description);
+	     film.setTitle(title);
+	      
+		mv.addObject("film", databaseaccessor.updateFilm(film));
+		
+		  mv.setViewName("WEB-INF/updated.jsp");
+		
+		return mv;
+	}
+	@RequestMapping(path = "updatingFilm.do", method = RequestMethod.POST)
+	public ModelAndView updateFilm(Integer id) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("film", databaseaccessor.findFilmById(id));
 		
 		
 		mv.setViewName("WEB-INF/updatingFilm.jsp");

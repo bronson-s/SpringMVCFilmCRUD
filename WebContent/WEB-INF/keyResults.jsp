@@ -23,6 +23,17 @@
         <li>${film.replacementCost}</li>
         <li>${film.rating}</li>
         <li>${film.specialFeatures}</li>
+       
+        <li>   <form action="deleteFilm.do" method="POST">
+    <input type= "hidden" value="${film.id}" name="id">
+         <input type="submit" value="Delete Film" />
+	</form> </li>
+	
+	<li><form action="updatingFilm.do" method="POST">
+    <input type= "hidden" value="${film.id}" name="id">
+         <input type="submit" value="Update Film" />
+	</form></li>
+     
      </c:forEach>
       </ul>
     </c:when>
