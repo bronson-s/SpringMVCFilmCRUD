@@ -24,6 +24,8 @@
         <li>${film.replacementCost}</li>
         <li>${film.rating}</li>
         <li>${film.specialFeatures}</li>
+        <li>${film.actors}</li>
+        
      
       </ul>
     </c:when>
@@ -43,10 +45,10 @@ Would you like to update this film?
   <form action="updatingFilm.do" method="POST">
     <input type= "hidden" value="${film.id}" name="id">
          <input type="submit" value="Update Film" />
-	</form>
+	</form> <br>
  
  
 	
-	
+
 </body>
 </html>

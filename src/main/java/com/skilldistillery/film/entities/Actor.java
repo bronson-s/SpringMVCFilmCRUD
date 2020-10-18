@@ -8,13 +8,13 @@ public class Actor {
 	private String lastName;
 	private List<Film> films;
 
-	public Actor(int id, String firstName, String lastName, List<Film> films) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.films = films;
-	}
+//	public Actor(int id, String firstName, String lastName, List<Film> films) {
+//		super();
+//		this.id = id;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.films = films;
+//	}
 
 	public Actor(int id, String firstName, String lastName) {
 		super();
@@ -94,15 +94,15 @@ public class Actor {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Actor [id=");
+		builder.append("Actor id = ");
 		builder.append(id);
-		builder.append(", firstName=");
+		builder.append(", firstName = ");
 		builder.append(firstName);
-		builder.append(", lastName=");
-		builder.append(lastName);
-		builder.append(", films=");
-		builder.append(films);
-		builder.append("]");
+		builder.append(", lastName = ");
+		builder.append(lastName +  "\n");
+		//builder.append(", films = ");
+		//builder.append(films);
+	//	builder.append("]");
 		return builder.toString();
 	}
 

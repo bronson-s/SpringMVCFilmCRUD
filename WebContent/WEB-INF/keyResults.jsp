@@ -23,6 +23,7 @@
         <li>${film.replacementCost}</li>
         <li>${film.rating}</li>
         <li>${film.specialFeatures}</li>
+        <li>${film.actors}</li>
        
         <li>   <form action="deleteFilm.do" method="POST">
     <input type= "hidden" value="${film.id}" name="id">
@@ -41,5 +42,6 @@
       <p>No films found</p>
     </c:otherwise>
       </c:choose>
+
 </body>
 </html>

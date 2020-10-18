@@ -11,11 +11,11 @@
  <c:choose>
     <c:when test="${! empty film}">
 
-  film no
+  film updated
   
     </c:when>
     <c:otherwise>
-      <p>problem deleting</p>
+      <p>problem updating</p>
     </c:otherwise>
   </c:choose>
 </body>
