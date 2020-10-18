@@ -1,7 +1,7 @@
 package com.skilldistillery.film.entities;
 
-import java.util.List;
 
+import java.util.List;
 
 public class Film {
 	private int id;
@@ -16,6 +16,38 @@ public class Film {
 	private double replacementCost;
 	private String rating;
 	private String specialFeatures;
+	private String category;
+	
+	
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public Film(int id, String title, String description, short releaseYear, int languageId, String language,
+			int rentalDuration, double rentalRate, int length, double replacementCost, String rating,
+			String specialFeatures, String category, List<Actor> actors) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.releaseYear = releaseYear;
+		this.languageId = languageId;
+		this.language = language;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.length = length;
+		this.replacementCost = replacementCost;
+		this.rating = rating;
+		this.specialFeatures = specialFeatures;
+		this.category = category;
+		this.actors = actors;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	private List<Actor> actors;
 
 	public Film(int id, String title, String description, short releaseYear, int languageId, int rentalDuration,
@@ -168,6 +200,7 @@ public class Film {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((language == null) ? 0 : language.hashCode());
@@ -199,6 +232,11 @@ public class Film {
 			if (other.actors != null)
 				return false;
 		} else if (!actors.equals(other.actors))
+			return false;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -264,6 +302,8 @@ public class Film {
 		builder.append(releaseYear + "\n");
 		builder.append(" language= ");
 		builder.append(language + "\n" );
+		builder.append(" category= ");
+		builder.append(category + "\n" );
 		//builder.append(", languageId= ");
 		//builder.append(languageId + "\n");
 		//builder.append(", rentalDuration= ");

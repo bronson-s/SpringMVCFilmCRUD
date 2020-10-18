@@ -35,7 +35,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Connection conn;
 		conn = DriverManager.getConnection(URL, user, pass);
 
-		String sql = "SELECT * FROM film JOIN language on film.language_id = language.id WHERE film.id = ? ";
+		String sql ="SELECT * FROM film JOIN language on film.language_id = language.id "
+				+ "JOIN film_category ON film.id = film_category.film_id JOIN category ON film_category.category_id = category.id "
+				+ "WHERE film.id = ? ";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, filmId);
 		ResultSet rs = stmt.executeQuery();
@@ -53,8 +55,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			String rating = rs.getString(10);
 			String features = rs.getString(11);
 			String language = rs.getString(13);
+			String category = rs.getString("category.name");
 			film = new Film(fId, title, desc, releaseYear, langId, language, rentDur, rate, length, repCost, rating,
-					features, findActorsByFilmId(filmId));
+					features, category, findActorsByFilmId(filmId));
 
 			// film.setActors(findActorsByFilmId(filmId));
 			// List<Actor> actors = film.getActors();
@@ -121,7 +124,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String pass = "student";
 		Connection conn;
 		conn = DriverManager.getConnection(URL, user, pass);
-		String sql = "SELECT * FROM film JOIN language on film.language_id = language.id WHERE description LIKE ? OR title LIKE ? ";
+		String sql = "SELECT * FROM film JOIN language on film.language_id = language.id "
+				+ "JOIN film_category ON film.id = film_category.film_id JOIN category ON film_category.category_id = category.id "
+				+ "WHERE description LIKE ? OR title LIKE ? ";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, "%" + keyword + "%");
 		stmt.setString(2, "%" + keyword + "%");
@@ -140,8 +145,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			String rating = rs.getString(10);
 			String features = rs.getString(11);
 			String language = rs.getString(13);
+			String category = rs.getString("category.name");
 			film = new Film(fId, title, desc, releaseYear, langId, language, rentDur, rate, length, repCost, rating,
-					features, findActorsByFilmId(fId));
+					features, category, findActorsByFilmId(fId));
 			films.add(film);
 		}
 		return films;

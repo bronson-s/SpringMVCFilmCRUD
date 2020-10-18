@@ -23,6 +23,7 @@
         <li>${film.replacementCost}</li>
         <li>${film.rating}</li>
         <li>${film.specialFeatures}</li>
+        <li>${film.category}</li>
         <li>${film.actors}</li>
        
         <li>   <form action="deleteFilm.do" method="POST">
