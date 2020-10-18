@@ -10,6 +10,8 @@
 <h1>Welcome to film site</h1>
 <a href="idForm.html">Find film by ID</a><br/>
 <a href="createFilmForm.html">Create Film</a><br/>
+<a href="keywordFilmForm.html">Find a film by a keyword</a><br/>
+
 
 </body>
 </html>

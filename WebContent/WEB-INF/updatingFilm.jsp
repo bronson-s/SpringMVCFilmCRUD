@@ -8,27 +8,12 @@
 </head>
 <body>
 
-     <form action="updatingFilm.do" method="POST">
+     <form action="updatedFilm.do" method="POST">
     Title:
     <input type="text" name="title"/> <br>
     Description:
     <input type="text" name="description"/> <br>
-    Release year:
-    <input type="text" name="releaseYear"/> <br> 
-    Language id:
-    <input type="text" name="languageId"/> <br>
-    Rental duration:
-    <input type="text" name="rentalDuration"/> <br>
-    Rental rate:
-    <input type="text" name="rentalRate"/> <br>
-    Length:
-    <input type="text" name="length"/> <br>
-    Replacement cost:
-    <input type="text" name="replacementCost"/> <br>
-    Rating:
-    <input type="text" name="rating"/> <br> 
-    Special features:
-    <input type="text" name="specialFeatures"/> <br>
+
     
     <input type="submit" value="Update Film " />
   </form>

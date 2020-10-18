@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Film</title>
-
+<title>Insert title here</title>
 </head>
 <body>
-  <c:choose>
+ <c:choose>
     <c:when test="${! empty film}">
       <ul>
+      <c:forEach var="film" items="${film}">
         <li>${film.title}</li>
         <li>${film.description}</li>
         <li>${film.releaseYear}</li>
@@ -24,28 +23,12 @@
         <li>${film.replacementCost}</li>
         <li>${film.rating}</li>
         <li>${film.specialFeatures}</li>
-     
+     </c:forEach>
       </ul>
     </c:when>
     <c:otherwise>
-      <p>No film found</p>
+      <p>No films found</p>
     </c:otherwise>
-  </c:choose>
-  Would you like to delete this film?
-  <form action="deleteFilm.do" method="POST">
-    <input type= "hidden" value="${film.id}" name="id">
-         <input type="submit" value="Delete Film" />
-	</form> <br>
-Would you like to update this film?
-
- 
- 
-  <form action="updatingFilm.do" method="POST">
-    <input type= "hidden" value="${film.id}" name="id">
-         <input type="submit" value="Update Film" />
-	</form>
- 
-	
-	
+      </c:choose>
 </body>
 </html>
