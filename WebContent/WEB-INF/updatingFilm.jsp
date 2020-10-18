@@ -9,7 +9,7 @@
 <body>
 
   <form action="updatedFilm.do" method="POST">
-     <input type= "text" value="${film.id}" name="id">
+     <input type= "hidden" value="${film.id}" name="id">
     Title:
     <input type="text" name="title"/> <br>
     Description:
