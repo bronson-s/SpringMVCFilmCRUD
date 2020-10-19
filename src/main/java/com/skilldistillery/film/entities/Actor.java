@@ -96,9 +96,9 @@ public class Actor {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Actor id = ");
 		builder.append(id);
-		builder.append(", firstName = ");
+		builder.append(", First Name = ");
 		builder.append(firstName);
-		builder.append(", lastName = ");
+		builder.append(", Last Name = ");
 		builder.append(lastName +  "\n");
 		//builder.append(", films = ");
 		//builder.append(films);

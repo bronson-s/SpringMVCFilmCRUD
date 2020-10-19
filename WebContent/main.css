@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+h1{
+text-align: center;
+  color: gray;
+  background-color: black;
+  font-family: monospace;
+}
+h2{
+  color: navy;
+  background-color: #cccccc;
+  font-family:monospace;
+}
+body {
+	font-size: x-large;
+  color: black;
+  background-color: #cccccc;
+  font-family: monospace;
+}
