@@ -16,6 +16,7 @@ Students were asked to build a full stack web application that encompassed Sprin
 * Spring Web Model View Controller patterns
 * Spring MVC with C.R.U.D
 * HTML and CSS
+* Gradle
 
 ### Challenges/Lessons Learned.
 The biggest challenge of this project was navigating the group dynamics for a larger app for the first time. It was challenging to coordinate time and more over we quickly discovered what sorts of problems can arrive when working in a collaborated format through git. Definitely lots of valuable take aways for the three of us when it comes to working as a team on a web application. Most of these take aways have to do with communication and timing.
